@@ -3,6 +3,13 @@ import Civil from "../Components/Civil";
 const OverviewTab = () => {
   const [ismainCheckbox, setIsMainCheckBox] = useState(false);
   const [packageChecked, setPackageChecked] = useState([]);
+  const initializeArray = (length) => {
+    const newArray = Array.from({ length }, () => false);
+    setPackageChecked(newArray);
+  };
+  React.useEffect(() => {
+    initializeArray(4);
+  }, []);
   const packages = [
     {
       packagename: "civil 1",
@@ -10,22 +17,22 @@ const OverviewTab = () => {
       total: "100",
     },
     {
-      packagename: "civil 1",
-      rate: "2552",
+      packagename: "civil 2",
+      rate: "4587",
       total: "100",
     },
     {
-      packagename: "civil 1",
-      rate: "2552",
+      packagename: "civil 3",
+      rate: "4561",
       total: "100",
     },
     {
-      packagename: "civil 1",
-      rate: "2552",
+      packagename: "civil 4",
+      rate: "4651",
       total: "100",
     },
   ];
-
+  
   const handleMainCheckbox = (e) => {
     const isChecked = e.target.checked;
     setIsMainCheckBox(isChecked);
@@ -40,11 +47,15 @@ const OverviewTab = () => {
     const updatedpackageChecked = [...packageChecked];
     updatedpackageChecked[index] = isChecked;
     setPackageChecked(updatedpackageChecked);
-    setIsMainCheckBox(updatedpackageChecked.every((isChecked) => isChecked));
+    let allchecked=true;
+    updatedpackageChecked.forEach((value) => {
+      allchecked=allchecked & value;
+    });
+    setIsMainCheckBox(allchecked);
   };
   return (
     <div>
-      <div>
+      <div className=" w-full bg-slate-400 flex flex-row justify-between justify-evenly">
         <label>
           <input
             type="checkbox"
@@ -52,6 +63,8 @@ const OverviewTab = () => {
             onChange={handleMainCheckbox}
           />
         </label>
+        <div>packages</div>
+        <div>Rate(in sqft)</div>
       </div>
 
       <div>
@@ -70,7 +83,6 @@ const OverviewTab = () => {
               </label>
               <Civil civilchecked={packageChecked[index]} civilindex={index} civilName={onepackage.packagename} civilRate={onepackage.rate} civilTotal={onepackage.total} handlePackageCheckboxChange={handlePackageCheckboxChange}/>
               </div>
-              
             </li>
           ))}
         </ul>
