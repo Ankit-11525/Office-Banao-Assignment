@@ -1,9 +1,9 @@
 import React from 'react'
 
-const OtherTab = () => {
+const Other = () => {
   return (
     <div>Hello World!</div>
   )
 }
 
-export default OtherTab
+export default Other
