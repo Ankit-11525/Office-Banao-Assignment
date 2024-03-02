@@ -39,14 +39,7 @@ const Civil = ({
   ];
   useEffect(() => {
     initializeArray(4);
-    const isChecked = civilchecked;
-    if (isChecked) {
-      setActivityChecked(Activities.map(() => true));
-    } else {
-      setActivityChecked(Activities.map(() => false));
-    }
-    console.log(civilchecked, 4);
-  }, []);
+  }, [civilchecked]);
   const handleActivityCheckboxChange = (index, isChecked) => {
     const updatedActivityChecked = [...activityChecked];
     updatedActivityChecked[index] = isChecked;

@@ -33,7 +33,7 @@ const Activity = ({
   ];
   useEffect(() => {
     initializeArray(3);
-  }, []);
+  }, [activitychecked]);
   const handleWorkItemCheckboxChange = (index, isChecked) => {
     const updatedWorkItemChecked = [...WorkItemChecked];
     updatedWorkItemChecked[index] = isChecked;
