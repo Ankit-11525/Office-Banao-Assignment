@@ -7,7 +7,9 @@ const Navbar = () => {
   const buttonStyle = {
     fontSize: '18px',
     padding: '8px 45px',
+    color:'blue-500',
     margin: '5px',
+    backgroundColor: "#6CA6CD"
   };
   return (
     <div>
@@ -17,7 +19,7 @@ const Navbar = () => {
           <div className="mx-8 text-lg">Create Workorder</div>
         </div>
 
-        <Button variant="contained" style={buttonStyle}>Save</Button>
+        <Button variant="contained" style={buttonStyle} >Save</Button>
       </div>
     </div>
   );
